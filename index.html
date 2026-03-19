@@ -3,229 +3,810 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex Carter | Web Developer</title>
+  <title>Jordan Lee | Full-Stack Developer</title>
+  <meta name="description" content="Full-stack developer portfolio with services, projects, testimonials, and contact section." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #070b16;
-      --card: rgba(18, 27, 47, 0.6);
+      --bg: #060914;
+      --surface: #0d1324;
+      --surface-2: #121b31;
       --text: #eef3ff;
-      --muted: #a7b2cd;
-      --accent: #7c5cff;
-      --accent-2: #00d4ff;
-      --border: rgba(255, 255, 255, 0.14);
-      --shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+      --muted: #aab5d1;
+      --primary: #8b5cf6;
+      --secondary: #06b6d4;
+      --accent: #22c55e;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --container: 1140px;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
       font-family: "Inter", sans-serif;
       color: var(--text);
-      min-height: 100vh;
       background:
-        radial-gradient(circle at 10% 0%, #2b2d6e 0%, transparent 42%),
-        radial-gradient(circle at 90% 20%, #014d68 0%, transparent 36%),
-        linear-gradient(165deg, #070b16, #0d1021);
-      display: grid;
-      place-items: center;
-      padding: 32px;
+        radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.2), transparent 40%),
+        radial-gradient(circle at 100% 10%, rgba(6, 182, 212, 0.18), transparent 35%),
+        linear-gradient(165deg, #060914 0%, #0a1020 45%, #050913 100%);
+      min-height: 100vh;
+      line-height: 1.6;
     }
 
-    .card {
-      width: min(900px, 100%);
-      background: var(--card);
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), 92%);
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: rgba(14, 21, 40, 0.62);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      overflow: hidden;
     }
 
-    .top-bar {
-      height: 8px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    .section {
+      padding: 84px 0;
     }
 
-    .content {
-      display: grid;
-      gap: 28px;
-      padding: clamp(24px, 6vw, 52px);
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 10px;
     }
 
-    .badge {
-      width: fit-content;
-      border: 1px solid var(--border);
+    .section-subtitle {
       color: var(--muted);
+      max-width: 68ch;
+      margin-bottom: 32px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 8px 14px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+      font-size: 0.78rem;
       text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5.5vw, 3.7rem);
-      line-height: 1.06;
-      max-width: 14ch;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 18px;
     }
 
     .gradient-text {
-      background: linear-gradient(90deg, #91f0ff, #b39bff 48%, #f8ccff);
+      background: linear-gradient(90deg, #b7a3ff, #86e5f7 52%, #c7ffd4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       color: transparent;
     }
 
-    p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: 58ch;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(5, 9, 18, 0.8);
+      backdrop-filter: blur(10px);
     }
 
-    .actions {
+    .nav-wrap {
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
     }
 
-    button,
-    .ghost {
+    .brand {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.94rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffffff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       border: 0;
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 12px 18px;
       font: inherit;
       font-weight: 600;
       cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
-    button {
-      color: white;
-      background: linear-gradient(90deg, var(--accent), #6f7dff);
-      box-shadow: 0 10px 24px rgba(124, 92, 255, 0.45);
-    }
-
-    .ghost {
-      color: var(--text);
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    button:hover,
-    .ghost:hover {
+    .btn:hover {
       transform: translateY(-2px);
     }
 
-    .stats {
+    .btn-primary {
+      color: #ffffff;
+      background: linear-gradient(90deg, var(--primary), #6366f1);
+      box-shadow: 0 10px 24px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+      color: #ffffff;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero {
+      padding: 72px 0 56px;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      padding: clamp(24px, 4vw, 44px);
+      border-radius: var(--radius-lg);
+    }
+
+    .hero-main h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      max-width: 15ch;
+    }
+
+    .hero-main p {
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(110px, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 14px;
+    }
+
+    .side-card {
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .side-card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .side-card p,
+    .side-card li {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .side-card ul {
+      padding-left: 18px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .stack-grid,
+    .services-grid,
+    .projects-grid,
+    .testimonial-grid,
+    .blog-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stack-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.02);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .project {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.2s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-head {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(120deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.15));
+    }
+
+    .project-head h3 {
+      margin-bottom: 6px;
+    }
+
+    .project-head span {
+      color: #d4d9ea;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .project-body {
+      padding: 16px;
+      display: grid;
       gap: 12px;
     }
 
-    .stat {
-      background: rgba(255, 255, 255, 0.03);
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-tags em {
+      font-style: normal;
+      font-size: 0.78rem;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--muted);
     }
 
-    .stat strong {
+    .project-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #c7d2fe;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    blockquote {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    blockquote footer {
+      margin-top: 12px;
+      font-weight: 600;
+      color: #dde4ff;
+    }
+
+    .blog-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .blog-card small {
+      color: #c9d2ef;
       display: block;
-      font-size: 1.3rem;
-      margin-bottom: 3px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
     }
 
-    .stat span {
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: #dce4ff;
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      padding: 12px;
+      font: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .status {
+      min-height: 1.1em;
+      color: #baf8cd;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 30px 0 44px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
       color: var(--muted);
       font-size: 0.88rem;
     }
 
-    .status {
-      color: #c0ffdb;
-      font-size: 0.92rem;
-      font-weight: 600;
-      min-height: 1.2em;
+    @media (max-width: 980px) {
+      .hero-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      .hero-meta {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+      }
     }
 
-    @media (max-width: 580px) {
-      body {
-        padding: 16px;
+    @media (max-width: 620px) {
+      .section {
+        padding: 64px 0;
       }
 
-      .actions {
+      .nav-wrap {
         flex-direction: column;
+        align-items: flex-start;
       }
 
-      button,
-      .ghost {
-        text-align: center;
+      .hero-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="top-bar"></div>
-    <section class="content">
-      <div class="badge">Available for Freelance</div>
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">Jordan Lee<span class="gradient-text">.dev</span></a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#stack">Tech Stack</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-      <h1>
-        Building fast, beautiful <span class="gradient-text">web experiences</span>
-      </h1>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <article class="hero-main glass">
+          <span class="tag">Available for full-time + freelance</span>
+          <h1>
+            Full-stack developer building <span class="gradient-text">production-grade products</span>
+          </h1>
+          <p>
+            I design and build complete digital platforms — from UI and design systems to APIs,
+            databases, cloud infrastructure, and CI/CD automation. I help teams launch fast,
+            scale confidently, and keep codebases maintainable over time.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Start a Project</a>
+            <a href="#projects" class="btn btn-secondary">View Work</a>
+          </div>
+          <div class="hero-meta">
+            <div class="metric">
+              <strong>8+ Years</strong>
+              <span>Hands-on experience</span>
+            </div>
+            <div class="metric">
+              <strong>120+</strong>
+              <span>Projects shipped</span>
+            </div>
+            <div class="metric">
+              <strong>35M+</strong>
+              <span>Monthly user reach</span>
+            </div>
+          </div>
+        </article>
 
-      <p>
-        Hi, I'm Alex — a web developer focused on responsive interfaces, clean JavaScript,
-        and performant front-end architecture. I craft digital products that feel smooth,
-        modern, and memorable.
-      </p>
-
-      <div class="actions">
-        <button id="ctaBtn">Let's Work Together</button>
-        <a href="#" class="ghost" aria-label="Open resume">View Resume</a>
+        <aside class="hero-side">
+          <div class="side-card glass">
+            <h3>Current Focus</h3>
+            <ul>
+              <li>Building AI-assisted SaaS platforms</li>
+              <li>Improving Web Core Vitals and accessibility</li>
+              <li>Modernizing legacy monoliths to scalable services</li>
+            </ul>
+          </div>
+          <div class="side-card glass">
+            <h3>What I Build</h3>
+            <p>
+              SaaS dashboards, e-commerce platforms, internal tools, APIs, payment systems,
+              auth/permissions, and observability-first infrastructure.
+            </p>
+          </div>
+          <div class="side-card glass">
+            <h3>Location & Timezone</h3>
+            <p>Remote-first • Based in New York, USA • UTC-5 / UTC-4</p>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <div class="stats" aria-label="developer highlights">
-        <article class="stat">
-          <strong>6+</strong>
-          <span>Years Experience</span>
+    <section id="about" class="section">
+      <div class="container">
+        <span class="tag">About Me</span>
+        <h2 class="section-title">Engineering with business outcomes in mind</h2>
+        <p class="section-subtitle">
+          I combine product thinking, clean architecture, and pragmatic delivery. Beyond coding,
+          I collaborate with founders, product managers, and designers to define scope, prioritize
+          impact, and ship measurable improvements.
+        </p>
+      </div>
+    </section>
+
+    <section id="stack" class="section">
+      <div class="container">
+        <span class="tag">Tech Stack</span>
+        <h2 class="section-title">Modern tools across frontend, backend, and DevOps</h2>
+        <p class="section-subtitle">
+          My stack is selected for performance, reliability, and developer velocity.
+        </p>
+        <div class="stack-grid">
+          <div class="chip">React / Next.js</div>
+          <div class="chip">TypeScript</div>
+          <div class="chip">Node.js / Express</div>
+          <div class="chip">Python / FastAPI</div>
+          <div class="chip">PostgreSQL / Redis</div>
+          <div class="chip">Docker / Kubernetes</div>
+          <div class="chip">AWS / Vercel / GCP</div>
+          <div class="chip">GitHub Actions CI/CD</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <span class="tag">Services</span>
+        <h2 class="section-title">End-to-end development services</h2>
+        <p class="section-subtitle">From idea to launch and beyond.</p>
+        <div class="services-grid">
+          <article class="card">
+            <h3>Full Product Development</h3>
+            <p>Build complete web products from planning and UI implementation to API delivery and deployment.</p>
+          </article>
+          <article class="card">
+            <h3>API Architecture</h3>
+            <p>Design scalable REST/GraphQL APIs with authentication, role-based access, and robust documentation.</p>
+          </article>
+          <article class="card">
+            <h3>Performance Optimization</h3>
+            <p>Improve page speed, reduce infra cost, optimize DB queries, and eliminate performance bottlenecks.</p>
+          </article>
+          <article class="card">
+            <h3>Cloud & DevOps</h3>
+            <p>Automate CI/CD pipelines, production deployments, monitoring, and secure environment management.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <span class="tag">Featured Projects</span>
+        <h2 class="section-title">Recent full-stack work</h2>
+        <p class="section-subtitle">A few examples of products built and scaled in production.</p>
+        <div class="projects-grid">
+          <article class="project">
+            <header class="project-head">
+              <h3>NovaBoard Analytics</h3>
+              <span>SaaS / Analytics Platform</span>
+            </header>
+            <div class="project-body">
+              <p>Built a multi-tenant dashboard with real-time event ingestion and role-based access for enterprise clients.</p>
+              <div class="project-tags">
+                <em>Next.js</em><em>TypeScript</em><em>PostgreSQL</em><em>Redis</em>
+              </div>
+              <div class="project-links">
+                <a href="#" aria-label="Live demo for NovaBoard">Live Demo →</a>
+                <a href="#" aria-label="Case study for NovaBoard">Case Study →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <header class="project-head">
+              <h3>PulseCart Commerce</h3>
+              <span>E-commerce / Checkout Engine</span>
+            </header>
+            <div class="project-body">
+              <p>Developed a high-conversion storefront and checkout flow with custom payment orchestration and inventory sync.</p>
+              <div class="project-tags">
+                <em>React</em><em>Node.js</em><em>Stripe</em><em>AWS</em>
+              </div>
+              <div class="project-links">
+                <a href="#" aria-label="Live demo for PulseCart">Live Demo →</a>
+                <a href="#" aria-label="Case study for PulseCart">Case Study →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <header class="project-head">
+              <h3>Helio HealthOps</h3>
+              <span>Healthcare / Internal Platform</span>
+            </header>
+            <div class="project-body">
+              <p>Shipped scheduling, reporting, and auditing modules for 400+ staff with strict performance and compliance goals.</p>
+              <div class="project-tags">
+                <em>Vue</em><em>FastAPI</em><em>PostgreSQL</em><em>Docker</em>
+              </div>
+              <div class="project-links">
+                <a href="#" aria-label="Live demo for Helio HealthOps">Live Demo →</a>
+                <a href="#" aria-label="Case study for Helio HealthOps">Case Study →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section">
+      <div class="container">
+        <span class="tag">Testimonials</span>
+        <h2 class="section-title">What clients and teams say</h2>
+        <p class="section-subtitle">Trusted by startups and enterprise teams.</p>
+        <div class="testimonial-grid">
+          <blockquote>
+            “Jordan took our MVP from unstable to launch-ready in six weeks, while improving UX and cutting load times by over 40%.”
+            <footer>— Product Lead, Fintech Startup</footer>
+          </blockquote>
+          <blockquote>
+            “Strong architecture decisions, clear communication, and high-quality code. One of the most reliable engineers we've worked with.”
+            <footer>— CTO, B2B SaaS Company</footer>
+          </blockquote>
+          <blockquote>
+            “From frontend polish to backend scaling, the delivery was exceptional. Stakeholder confidence went up immediately.”
+            <footer>— Director of Engineering, HealthTech</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="section">
+      <div class="container">
+        <span class="tag">Insights</span>
+        <h2 class="section-title">Writing on engineering and product delivery</h2>
+        <p class="section-subtitle">Short reads from recent technical explorations.</p>
+        <div class="blog-grid">
+          <article class="card blog-card">
+            <small>Engineering • 8 min</small>
+            <h3>Scaling APIs without sacrificing developer speed</h3>
+            <p>Patterns for keeping services fast, testable, and easy to iterate as teams grow.</p>
+          </article>
+          <article class="card blog-card">
+            <small>Frontend • 6 min</small>
+            <h3>Modern UI architecture for complex dashboards</h3>
+            <p>How to design component systems that remain consistent across product teams.</p>
+          </article>
+          <article class="card blog-card">
+            <small>DevOps • 7 min</small>
+            <h3>Practical CI/CD workflows for startup teams</h3>
+            <p>A lean pipeline setup for faster releases with safer rollbacks and observability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-layout">
+        <article>
+          <span class="tag">Contact</span>
+          <h2 class="section-title">Let's build your next product</h2>
+          <p class="section-subtitle">
+            Share your goals, timeline, and current challenges. I can support strategy,
+            delivery, and long-term product scaling.
+          </p>
+          <ul class="contact-list">
+            <li>Email: hello@jordanlee.dev</li>
+            <li>LinkedIn: linkedin.com/in/jordanlee</li>
+            <li>GitHub: github.com/jordanlee</li>
+            <li>Availability: Open to contract and full-time opportunities</li>
+          </ul>
         </article>
-        <article class="stat">
-          <strong>90+</strong>
-          <span>Projects Delivered</span>
-        </article>
-        <article class="stat">
-          <strong>99%</strong>
-          <span>Client Satisfaction</span>
+
+        <article class="card glass">
+          <form id="contactForm">
+            <div>
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="jane@company.com" required />
+            </div>
+            <div>
+              <label for="message">Project Brief</label>
+              <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Inquiry</button>
+            <p id="formStatus" class="status" aria-live="polite"></p>
+          </form>
         </article>
       </div>
-
-      <div class="status" id="statusText" aria-live="polite"></div>
     </section>
   </main>
 
-  <script>
-    const ctaBtn = document.getElementById("ctaBtn");
-    const statusText = document.getElementById("statusText");
+  <footer>
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Jordan Lee. All rights reserved.</p>
+      <p>Built with HTML, CSS, and JavaScript.</p>
+    </div>
+  </footer>
 
-    ctaBtn.addEventListener("click", () => {
-      const now = new Date();
-      statusText.textContent = `Thanks for reaching out! I'll reply within 24 hours. (${now.toLocaleTimeString()})`;
-      ctaBtn.textContent = "Message Sent ✓";
-      ctaBtn.disabled = true;
-      ctaBtn.style.opacity = "0.9";
-      ctaBtn.style.cursor = "not-allowed";
+  <script>
+    const form = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+    const year = document.getElementById("year");
+    const navLinks = Array.from(document.querySelectorAll("nav a"));
+
+    year.textContent = new Date().getFullYear();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const name = formData.get("name");
+      formStatus.textContent = `Thanks, ${name}! Your message has been captured. I will get back to you within 24 hours.`;
+      form.reset();
+    });
+
+    window.addEventListener("scroll", () => {
+      const position = window.scrollY + 120;
+      navLinks.forEach((link) => {
+        const section = document.querySelector(link.getAttribute("href"));
+        if (!section) return;
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+        link.classList.toggle("active", position >= top && position < bottom);
+      });
     });
   </script>
 </body>
