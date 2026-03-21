@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Jordan Lee</title>
+  <meta name="description" content="Contact Jordan Lee for full-stack development projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060914;
+      --surface: #0d1324;
+      --surface-2: #121b31;
+      --text: #eef3ff;
+      --muted: #aab5d1;
+      --primary: #8b5cf6;
+      --secondary: #06b6d4;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --container: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.2), transparent 40%),
+        radial-gradient(circle at 100% 10%, rgba(6, 182, 212, 0.18), transparent 35%),
+        linear-gradient(165deg, #060914 0%, #0a1020 45%, #050913 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), 92%);
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: rgba(14, 21, 40, 0.62);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #b7a3ff, #86e5f7 52%, #c7ffd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(5, 9, 18, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.94rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffffff;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 28px;
+    }
+
+    .contact-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 40px);
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #dde7ff;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(134, 229, 247, 0.7);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      color: #ffffff;
+      background: linear-gradient(90deg, var(--primary), #6366f1);
+      box-shadow: 0 10px 24px rgba(99, 102, 241, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .status {
+      min-height: 1.4em;
+      color: #befad0;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Jordan Lee<span class="gradient-text">.dev</span></a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <article class="contact-wrap glass">
+          <span class="tag">Contact</span>
+          <h1 class="section-title">Let's build your next product</h1>
+          <p class="section-subtitle">
+            Share your details and project goals. I will follow up with next steps and timelines.
+          </p>
+
+          <form id="contactForm">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="jane@company.com" required />
+            </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" placeholder="+1 555 123 4567" required />
+            </div>
+            <div>
+              <label for="description">Description</label>
+              <textarea id="description" name="description" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Inquiry</button>
+            <p id="formStatus" class="status" aria-live="polite"></p>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Jordan Lee. All rights reserved.</p>
+      <p>Built with HTML, CSS, and JavaScript.</p>
+    </div>
+  </footer>
+
+  <script>
+    const year = document.getElementById("year");
+    const form = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+
+    year.textContent = new Date().getFullYear();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const name = formData.get("name");
+      formStatus.textContent = `Thanks, ${name}. Your details were captured and I will contact you soon.`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
